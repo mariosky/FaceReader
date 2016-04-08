@@ -11,17 +11,17 @@ namespace Microsoft.Samples.Kinect.FaceBasics
     using System.ComponentModel;
     using System.Diagnostics;
     using System.Globalization;
-    using System.IO;
+  //using System.IO;
     using System.Windows;
     using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Windows.Media.Media3D;
+  // using System.Windows.Media.Imaging;
+  //using System.Windows.Media.Media3D;
     using Microsoft.Kinect;
     using Microsoft.Kinect.Face;
 
 
     using System.Web.Script.Serialization;
-    using MySql.Data.MySqlClient;
+  // using MySql.Data.MySqlClient;
     using StackExchange.Redis;
     
 
@@ -170,7 +170,7 @@ namespace Microsoft.Samples.Kinect.FaceBasics
         /// </summary>
         private string statusText = null;
 
-        private FaceBasics.MySQL conn = new FaceBasics.MySQL( new MySqlConnection("persistsecurityinfo=True;server=localhost;user=root;password=masterkey;database=facedb"));
+      //private FaceBasics.MySQL conn = new FaceBasics.MySQL( new MySqlConnection("persistsecurityinfo=True;server=localhost;user=root;password=masterkey;database=facedb"));
         ConnectionMultiplexer redis = null;
 
 
@@ -179,6 +179,16 @@ namespace Microsoft.Samples.Kinect.FaceBasics
         /// </summary>
         public MainWindow()
         {
+            // initialize redis
+            try
+            {
+                this.redis = ConnectionMultiplexer.Connect("192.168.1.7");
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.Message);
+            }
+
             // one sensor is currently supported
             this.kinectSensor = KinectSensor.GetDefault();
             
@@ -563,15 +573,7 @@ namespace Microsoft.Samples.Kinect.FaceBasics
 
 
 
-            // initialize redis
-            try
-            {
-                this.redis = ConnectionMultiplexer.Connect("192.168.1.7");
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex.Message);
-            }
+
 
 
 
@@ -585,7 +587,7 @@ namespace Microsoft.Samples.Kinect.FaceBasics
 
 
 
-
+            /*
             MySqlCommand command = new MySqlCommand();
             command.CommandType = System.Data.CommandType.Text;
 
@@ -631,7 +633,7 @@ namespace Microsoft.Samples.Kinect.FaceBasics
             conn.connect();
             command.ExecuteNonQuery();
             conn.close();
-
+            */
             
             
             FrameEvent frame = new FrameEvent();
