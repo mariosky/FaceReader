@@ -4,28 +4,32 @@
         Title="Face Basics" 
         Height="768" Width="1024" 
         Loaded="MainWindow_Loaded"
-        Closing="MainWindow_Closing"> 
-  <Window.Resources>
-    <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e" />
-    <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f" />
-    <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2" />
-  </Window.Resources>
-  <Grid Margin="10 0 10 0">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="Auto" />
-    </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Margin="0 0 -1 0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="18">Face Basics</TextBlock>
-    <Image Grid.Row="0" Source="Images\Status.png" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5" />
+        Closing="MainWindow_Closing">
+    <Window.Resources>
+        <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e" />
+        <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f" />
+        <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2" />
+    </Window.Resources>
+    <Grid Margin="10 0 10 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Margin="0,0,9.2,10.2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="18" Text="Face Reader"/>
+        <Image Grid.Row="0" Source="Images\Status.png" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5" />
 
-    <Viewbox Grid.Row="1" HorizontalAlignment="Center">
-      <Image Source="{Binding ImageSource}" Stretch="UniformToFill" />
-    </Viewbox>
-      
-    <StatusBar Grid.Row="2" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
-      <StatusBarItem Content="{Binding StatusText}" />
-    </StatusBar>
+        <Viewbox Grid.Row="1" HorizontalAlignment="Center">
+            <Image Source="{Binding ImageSource}" Stretch="UniformToFill" />
+        </Viewbox>
+
+        <StatusBar Grid.Row="2" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
+            <StatusBarItem Content="{Binding StatusText}" />
+        </StatusBar>
         <Button x:Name="btnPlay" Content="Play" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="75" Click="btnPlay_Click"/>
+        <Label x:Name="label" Content="Redis Server:" HorizontalAlignment="Left" Margin="124,17,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtRedis" HorizontalAlignment="Left" Height="23" Margin="201,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="LabelKinectId" Content="Kinect ID" HorizontalAlignment="Left" Margin="715,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.441,-0.431"/>
+        <Label x:Name="LabelKinectId_Copy" Content="Kinect ID:" HorizontalAlignment="Left" Margin="626,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.441,-0.431"/>
     </Grid>
 </Window>

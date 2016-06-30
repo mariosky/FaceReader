@@ -327,6 +327,8 @@ namespace Microsoft.Samples.Kinect.FaceBasics
         /// <param name="e">event arguments</param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            this.txtRedis.Text = "192.168.1.7";
+            this.LabelKinectId.Content = this.kinectSensor.UniqueKinectId.ToString();
             for (int i = 0; i < this.bodyCount; i++)
             {
                 if (this.faceFrameReaders[i] != null)
@@ -637,7 +639,7 @@ namespace Microsoft.Samples.Kinect.FaceBasics
             
             
             FrameEvent frame = new FrameEvent();
-            frame.kinect_id = 'X'+ this.kinectSensor.UniqueKinectId;
+            frame.kinect_id = this.kinectSensor.UniqueKinectId;
             frame.date_time  = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             frame.happy = faceResult.FaceProperties[FaceProperty.Happy].ToString();
             frame.engaged = faceResult.FaceProperties[FaceProperty.Engaged].ToString();
