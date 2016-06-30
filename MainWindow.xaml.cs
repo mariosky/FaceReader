@@ -637,7 +637,7 @@ namespace Microsoft.Samples.Kinect.FaceBasics
             
             
             FrameEvent frame = new FrameEvent();
-            frame.kinect_id = this.kinectSensor.UniqueKinectId;
+            frame.kinect_id = 'X'+ this.kinectSensor.UniqueKinectId;
             frame.date_time  = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             frame.happy = faceResult.FaceProperties[FaceProperty.Happy].ToString();
             frame.engaged = faceResult.FaceProperties[FaceProperty.Engaged].ToString();
